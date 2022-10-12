@@ -10,16 +10,22 @@ debug = DebugToolbarExtension(app)
 
 @app.get('/')
 def home():
+    '''
+    takes list of prompts and displays as inputs on home page
+    '''
     prompts = silly_story.prompts;
     return render_template('questions.html', prompts=prompts)
 
 
 @app.get('/story')
 def complete_story():
+    '''
+    takes inputs from query parameters and displays complete madlib story
+    '''
     answers = {}
     for key in request.args:
         answers[key] = request.args[key]
-    print('answers:', answers)
-    print('request.args: ', request.args)
+    # print('answers:', answers)
+    # print('request.args: ', request.args)
     finished_story = silly_story.generate(answers)
     return render_template('results.html', finished_story=finished_story)
