@@ -13,6 +13,7 @@ def home():
     '''
     takes list of prompts and displays as inputs on home page
     '''
+
     prompts = silly_story.prompts;
     return render_template('questions.html', prompts=prompts)
 
@@ -22,6 +23,7 @@ def complete_story():
     '''
     takes inputs from query parameters and displays complete madlib story
     '''
+
     answers = {}
     for key in request.args:
         answers[key] = request.args[key]
